@@ -29,9 +29,9 @@ public class SphereController : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("bundle", "the data");
-        string url = "http://localhost:8585/TrafficLightsAgentsStates";
-        //using (UnityWebRequest www = UnityWebRequest.Post(url, form))
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        string url = "https://nubeunity.us-south.cf.appdomain.cloud/TrafficLightsAgentsStates";
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+        //using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(data);
             www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -60,7 +60,7 @@ public class SphereController : MonoBehaviour
                 //{
                 //    Debug.Log(pal);
                 //}
-                Debug.Log("strs.Length:" + strs.Length);
+                //Debug.Log("strs.Length:" + strs.Length);
                 for (int i = 0; i < strs.Length; i++)
                 {
                     strs[i] = strs[i].Trim();
@@ -96,9 +96,9 @@ public class SphereController : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("bundle", "the data");
-        string url = "http://localhost:8585/CarAgentsPositions";
-        //using (UnityWebRequest www = UnityWebRequest.Post(url, form))
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        string url = "https://nubeunity.us-south.cf.appdomain.cloud/CarAgentsPositions";
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+        //using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(data);
             www.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -131,7 +131,7 @@ public class SphereController : MonoBehaviour
                     if (i == 0) strs[i] = strs[i] + '}';
                     else if (i == strs.Length - 1) strs[i] = '{' + strs[i];
                     else strs[i] = '{' + strs[i] + '}';
-                    Debug.Log(strs[i]);
+                    //Debug.Log(strs[i]);
                     Vector3 test = JsonUtility.FromJson<Vector3>(strs[i]);
                     //Debug.Log(test);
                     newPositions.Add(test);
@@ -186,7 +186,7 @@ public class SphereController : MonoBehaviour
             StartCoroutine(SendData2(json));
             foreach (List<int> lista in lightBool)
         {
-            //Debug.Log("pene");
+            //
             //cont =0;
             if(lista[1]==1)
             {
@@ -215,7 +215,7 @@ public class SphereController : MonoBehaviour
             //Debug.Log(lista[3]);
             //foreach(int pos in lista)
             //{
-                //Debug.Log("culo");
+                
                 //Debug.Log(pos);
                 
               //  if((cont == 2))
@@ -245,8 +245,13 @@ public class SphereController : MonoBehaviour
                 Vector3 interpolated = Vector3.Lerp(prevLast[s], last[s], dt);
                 spheres[s].transform.localPosition = interpolated;
 
-                Vector3 dir = last[s] - prevLast[s];
-                spheres[s].transform.rotation = Quaternion.LookRotation(dir);
+                if (last[s]!=prevLast[s])
+                {
+                    Vector3 dir = last[s] - prevLast[s];
+                    spheres[s].transform.rotation = Quaternion.LookRotation(dir);
+                }
+
+                
             }
         }
     }
