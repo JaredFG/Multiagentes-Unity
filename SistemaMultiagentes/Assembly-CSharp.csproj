@@ -36,10 +36,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\RandomLights.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\WaypointMover.cs" />
-     <Compile Include="Assets\Scripts\RandomLights.cs" />
+     <Compile Include="Assets\Scripts\JsonReader.cs" />
+     <Compile Include="Assets\Scripts\SphereController.cs" />
      <None Include="Assets\LowPoly Police Vehicles\Read Me.txt" />
+     <None Include="Assets\Scripts\JSONex.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
