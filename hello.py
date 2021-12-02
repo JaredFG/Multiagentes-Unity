@@ -1,6 +1,6 @@
 from  flask import Flask, render_template, request, jsonify
 import json, logging, os, atexit
-from CarModel2 import *
+from CarModel import *
 
 app = Flask(__name__, static_url_path='')
 model = CarModel(15, 20, 20)
